@@ -81,17 +81,17 @@ void draw() {
   int read = tdl.read(data, 0, 272);
   long sum = 0;
   if (read > 0) {    
-    for (int i = 0; i < read-1; i = i + 1) {
+    for (int i = 0; i < read-1; i = i + 2) {
       long val = ((data[i] & 0xffL) << 8L) | (data[i + 1] & 0xffL);
       long valf = extendSign(val, 16);
-      if (Math.abs(valf) >= Math.pow(2,14)) {
+      if (Math.abs(valf) >= Math.pow(2,10)) {
         sum += valf;
       }
     }
   }
   
   lowPass[lowPassInd++ % 10] = sum;  
-  background(0, scaleF(average(lowPass), (float)Math.pow(2,16), 255), 60);
+  background(0, scaleF(average(lowPass), (float)Math.pow(2,11), 255), 60);
   
   
   lastVal = nextVal(lastVal); 

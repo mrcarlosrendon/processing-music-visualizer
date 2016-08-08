@@ -4,7 +4,7 @@ Collection of processing scripts to visualize music
 Warning, the current version is a bit "seizure-y". Please exercise
 caution before viewing. I'm working to make it more pleasant.
 
-Requires (Processing)[https://processing.org/] software to run.
+Requires [Processing](https://processing.org/) software to run.
 
 Re-mixes welcome. Please share.
 

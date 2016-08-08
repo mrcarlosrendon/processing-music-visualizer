@@ -10,58 +10,6 @@ int lastVal = 0;
 Vector[] balls = new Vector[10];                  
 Trail lines = new Trail(50);
 
-class Coord {
-  public Coord(float x, float y) {
-    this.x = x;
-    this.y = y;
-  }
-  float x;
-  float y;
-}
-
-class Vector {  
-    public Vector(Coord pos, Coord dir) {
-      this.pos = pos;
-      this.dir = dir;
-    }  
-  private Coord pos;
-  private Coord dir;
-  
-  public Coord getNextPos() {
-    pos.x = pos.x + dir.x;
-    pos.y = pos.y + dir.y;
-    
-    return new Coord(pos.x, pos.y);
-  }
-  
-  public void mirrorX() {
-    dir.x = -dir.x;
-  }
-  
-  public void mirrorY() {
-    dir.y = -dir.y;
-  }  
-}
-
-class Trail {
-  public Trail(int limit) {
-    this.limit = limit;
-    this.trail = new Coord[limit];
-    for(int i=0; i<limit; i++) {
-      this.trail[i] = new Coord(0,0);
-    }
-  }
-  
-  private final int limit;
-  private int currIndex = 0;
-  public Coord[] trail;
-  
-  public void addCoord(Coord c) {
-    currIndex = currIndex++ % limit;
-    trail[currIndex++] = c;
-  }
-}
-
 private static long extendSign(long temp, int bitsPerSample) {
     int extensionBits = 64 - bitsPerSample;
     return (temp << extensionBits) >> extensionBits;

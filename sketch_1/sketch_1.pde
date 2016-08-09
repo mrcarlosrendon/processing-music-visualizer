@@ -77,6 +77,7 @@ void draw() {
     return;
   }
   
+  long[] values = new long[272/2];
   byte[] data = new byte[272];
   int read = tdl.read(data, 0, 272);
   long sum = 0;
@@ -87,11 +88,19 @@ void draw() {
       if (Math.abs(valf) >= Math.pow(2,10)) {
         sum += valf;
       }
+      if (i>1) {
+        values[i/2] = valf;
+      }
     }
   }
   
   lowPass[lowPassInd++ % 10] = sum;  
   background(0, scaleF(average(lowPass), (float)Math.pow(2,11), 255), 60);
+  
+  for (int i=0; i<values.length-1; i=i+1) {
+    long increment = width / (272/2);
+    line(i*increment, scaleF((float)values[i], (float)Math.pow(2,14), 512) + 512, (i+1)*increment, scaleF((float)values[i+1], (float)Math.pow(2,14), 512) + 512);
+  }
   
   
   lastVal = nextVal(lastVal); 
